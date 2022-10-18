@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов»
 
 * Студент: [Sergey Sytsevich](https://up.htmlacademy.ru/react/11/user/2099281).
-* Наставник: `Неизвестно`.
+* Наставник: `Дмитрий (sench) Железцов`.
 
 ---
 
@@ -35,7 +35,7 @@ _`.editorconfig`, `.gitattributes`, `.gitignore`._
 Клонировать репозиторий можно так:
 
 ```
-git clone SSH-адрес_вашего_форка
+git clone git@github.com:sytsevichs/htmlAcademySixCities.git
 ```
 
 Команда клонирует репозиторий на ваш компьютер и подготовит всё необходимое для старта работы.
