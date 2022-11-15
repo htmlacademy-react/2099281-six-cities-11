@@ -1,4 +1,4 @@
-import Cards from '../cards/cards';
+import Cards from '../../components/cards/cards';
 
 type MainScreenProps = {
 

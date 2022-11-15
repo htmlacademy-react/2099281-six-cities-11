@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
 
-const Setting = {
-  ERROR_COUNT: 111,
+const AppProps = {
+  offersAmount: 111,
 };
 
 const root = ReactDOM.createRoot(
@@ -12,6 +12,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App errorsCount={Setting.ERROR_COUNT}/>
+    <App errorsCount={AppProps.offersAmount}/>
   </React.StrictMode>,
 );
