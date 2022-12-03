@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Logo from '../main-screen/logo';
+import Logo from '../logo/logo';
 
 function ErrorsScreen(): JSX.Element {
   return(

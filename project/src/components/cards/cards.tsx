@@ -1,17 +1,17 @@
-import { RentCards } from '../../types/types';
+import { RentInfo } from '../../types/types';
 import { MouseEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
-import {AppRoute} from '../app/const';
+import {AppRoute} from '../../constants';
 
 type CardScreenProps = {
-  cardsInfo: RentCards;
+  offers: RentInfo;
 }
 
-function Cards({ cardsInfo }: CardScreenProps): JSX.Element {
-  const { offers } = cardsInfo;
+function Cards( props: CardScreenProps): JSX.Element {
+  const { offers } = props;
   const [offerHover, cardsofferHoverHandler] = useState([false, false, false, false]);
   return (
-    <>
+    <div>
       {offers.map((offer, id) => {
         const keyValue = `${id}-${offer.src}`;
         return (
@@ -52,7 +52,7 @@ function Cards({ cardsInfo }: CardScreenProps): JSX.Element {
           </article>
         );
       })}
-    </>
+    </div>
   );
 }
 

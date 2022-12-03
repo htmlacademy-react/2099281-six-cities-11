@@ -1,14 +1,9 @@
 import Cards from '../../components/cards/cards';
-import {RentInfo} from '../../types/types';
+import { offers } from '../../mocks/offers';
 
-type CardsOffers = {
-  offers: RentInfo;
-}
-
-function OffersCards({offers}: CardsOffers): JSX.Element {
-  const [cardsInfo] = offers;
+function OffersList(): JSX.Element {
   return(
-    <Cards cardsInfo={cardsInfo}/>
+    <Cards offers={offers}/>
   );
 }
-export default OffersCards;
+export default OffersList;

@@ -1,4 +1,4 @@
-import Logo from '../main-screen/logo';
+import Logo from '../logo/logo';
 function FavoritesScreen(): JSX.Element {
   return (
     <div className="page">
