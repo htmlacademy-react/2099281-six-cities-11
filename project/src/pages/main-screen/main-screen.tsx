@@ -1,12 +1,13 @@
-import Cards from '../../components/cards/cards';
+import OffersList from '../offers-list/offers-list';
+import {RentInfo, ReviewsInfo} from '../../types/types';
 
 type MainScreenProps = {
+    errorsCount: number;
+    offers: RentInfo;
+    reviews: ReviewsInfo;
+  }
 
-  errorsCount: number;
-
-}
-
-function MainScreen({errorsCount}: MainScreenProps): JSX.Element {
+function MainScreen({errorsCount, offers, reviews}: MainScreenProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -95,11 +96,7 @@ function MainScreen({errorsCount}: MainScreenProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <Cards />
-                <Cards />
-                <Cards />
-                <Cards />
-                <Cards />
+                <OffersList offers={offers}/>
               </div>
             </section>
             <div className="cities__right-section">
