@@ -18,7 +18,7 @@ function SortForm(): JSX.Element {
           <use xlinkHref="#icon-arrow-select"></use>
         </svg>
       </span>
-      <ul className={`places__options places__options--custom places__options--closed`}>
+      <ul className={'places__options places__options--custom places__options--closed'}>
         {SortTypesArray.map((sortType) =>
           (
             <li

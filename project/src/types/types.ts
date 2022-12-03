@@ -24,15 +24,14 @@ export type CardType = {
     srcSmall: string;
   };
 
-  export type RentInfo = CardType[];
+export type RentInfo = CardType[];
 
-  export type ReviewType = {
-    id: number;
-    name: string;
-    src: string;
-    text: string;
-    date: string;
-  };
+export type ReviewType = {
+  id: number;
+  name: string;
+  src: string;
+  text: string;
+  date: string;
+};
 
-  export type ReviewsInfo = ReviewType[];
-  
+export type ReviewsInfo = ReviewType[];
