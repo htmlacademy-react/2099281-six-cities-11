@@ -35,6 +35,7 @@ function useMap(
 
       isRenderedRef.current = true;
     }
+
   }, [mapRef, city]);
 
   return map;

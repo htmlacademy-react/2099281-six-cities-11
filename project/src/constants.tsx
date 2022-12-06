@@ -35,6 +35,11 @@ export const DEFAULT_CITY: CityType = {
   zoom: 15
 };
 
+export enum ImgMarker {
+  MarkerDefault = 'img/pin.svg',
+  MarkerCurrent = 'img/pin-active.svg'
+}
+
 export enum SortTypes {
   Popular = 'Popular',
   PriceHigh = 'Price: low to high',

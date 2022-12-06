@@ -6,8 +6,14 @@ import PropertyScreen from '../../pages/property-screen/property-screen';
 import ErrorsScreen from '../../pages/error-screen/error-screen';
 import PrivateRoute from '../../pages/private-route/private-route';
 import FavoritesScreen from '../../pages/favorites-screen/favorites-screen';
+import { useAppDispatch } from '../../hooks';
+import { initializeData } from '../../store/offers-store/offers-actions';
 
 function App(): JSX.Element {
+
+  const dispatch = useAppDispatch();
+  dispatch(initializeData());
+
   return (
     <BrowserRouter>
       <Routes>

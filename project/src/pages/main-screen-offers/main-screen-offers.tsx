@@ -1,15 +1,12 @@
 
-import {DEFAULT_CITY} from '../../constants';
 import Map from '../../components/map/map';
 import OffersList from '../offers-list/offers-list';
-import { offers } from '../../mocks/offers';
 import SortForm from '../sort-form/sort-form';
-
+import { useAppSelector } from '../../hooks';
 
 function MainScreenOffers(): JSX.Element {
-  const currentCity = DEFAULT_CITY;
-  const offersForCity = offers.filter((offer) =>offer.city.name === currentCity.name);
-  const selectedPoint = offersForCity[0].city.location;
+  const currentCity = useAppSelector((state) =>state.resetSelection.selectedCity);
+  const offersForCity = useAppSelector((state)=>state.resetSelection.selectedOffers);
 
   return (
     <div className="cities__places-container container">
@@ -20,10 +17,9 @@ function MainScreenOffers(): JSX.Element {
         <OffersList/>
       </section>
       <div className="cities__right-section">
-        <Map city={currentCity} offers={offersForCity} selectedPoint={selectedPoint}/>
+        <Map city={currentCity} offers={offersForCity} selectedPoint={currentCity.location}/>
       </div>
     </div>
-
   );
 }
 export default MainScreenOffers;
