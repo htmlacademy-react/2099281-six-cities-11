@@ -32,19 +32,20 @@ function Map(props: MapProps) {
     if (map && offers !== undefined) {
       offers.forEach((offer) => {
         const marker = new Marker({
-          lat: offer.city.location.latitude,
-          lng: offer.city.location.longitude,
+          lat: offer.location.latitude,
+          lng: offer.location.longitude,
         });
 
         marker
           .setIcon(
-            selectedPoint !== undefined && offer.title === selectedPoint.title
+            selectedPoint !== undefined
               ? currentCustomIcon
               : defaultCustomIcon
-          );
-        marker.addTo(map);
+          ).addTo(map);
+
       });
     }
+
   }, [map, offers]);
 
   return (
