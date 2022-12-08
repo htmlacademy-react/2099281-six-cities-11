@@ -1,13 +1,13 @@
 import { OffersType } from '../../types/types';
 import { MouseEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
-import {AppRoute} from '../../constants';
+import { AppRoute } from '../../constants';
 
 type CardScreenProps = {
   offers: OffersType;
 }
 
-function Cards( props: CardScreenProps): JSX.Element {
+function Cards(props: CardScreenProps): JSX.Element {
   const { offers } = props;
   const [offerHover, cardsofferHoverHandler] = useState([false, false, false, false]);
   return (

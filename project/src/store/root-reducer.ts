@@ -1,17 +1,18 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { AuthorizationStatus, DEFAULT_CITY, SortTypes } from '../constants';
-import { resetSort, loadOffers, changeCity } from './offers-store/offers-actions';
+import { resetSort, loadOffers, changeCity, setLoadingStatus } from './offers-store/offers-actions';
 import { OffersType, UserType } from '../types/types';
-import {checkAuthAction, loginAction, logoutAction} from './api-actions';
+import { checkAuthAction, loginAction, logoutAction } from './api-actions';
 import { setError } from './action';
 
 type InitialState = {
   authorizationStatus: string,
-  authInfo: UserType,
+  authInfo: UserType | null,
   hasErrorLogin: boolean,
-  error: string,
+  error: string | null,
 
   offers: OffersType,
+  isDataLoading: boolean;
   selectedCity: string,
   selectedOffers: OffersType,
 
@@ -19,13 +20,14 @@ type InitialState = {
   sortView: string,
 };
 
-const initialState : InitialState = {
+const initialState: InitialState = {
   authorizationStatus: AuthorizationStatus.Unknown,
-  authInfo: <UserType><unknown>[],
+  authInfo: null,
   hasErrorLogin: false,
-  error: 'test',
+  error: null,
 
   offers: [],
+  isDataLoading: false,
   selectedCity: DEFAULT_CITY.name,
   selectedOffers: [],
 
@@ -46,6 +48,9 @@ const rootReducer = createReducer(initialState, (builder) => {
     .addCase(loadOffers, (state, action) => {
       state.offers = action.payload;
     })
+    .addCase(setLoadingStatus, (state, action) => {
+      state.isDataLoading = action.payload;
+    })
     .addCase(checkAuthAction.fulfilled, (state, action) => {
       state.authorizationStatus = AuthorizationStatus.Authorized;
       state.authInfo = action.payload;
@@ -65,11 +70,11 @@ const rootReducer = createReducer(initialState, (builder) => {
       state.authorizationStatus = AuthorizationStatus.NotAuthorized;
       state.hasErrorLogin = false;
     })
-    .addCase(setError, (state,action) => {
+    .addCase(setError, (state, action) => {
       state.authorizationStatus = AuthorizationStatus.NotAuthorized;
       state.hasErrorLogin = true;
       state.error = action.payload;
     });
-  });
+});
 
 export { rootReducer };

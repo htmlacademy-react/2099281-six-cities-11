@@ -1,12 +1,12 @@
-import {MouseEvent} from 'react';
-import {Link} from 'react-router-dom';
-import {AppRoute} from '../../constants';
+import { MouseEvent } from 'react';
+import { Link } from 'react-router-dom';
+import { AppRoute } from '../../constants';
 
 type OffersProps = {
   cityName: string;
 }
 
-function City({cityName}: OffersProps): JSX.Element {
+function City({ cityName }: OffersProps): JSX.Element {
   const handleItemClick = (event: MouseEvent<HTMLAnchorElement, globalThis.MouseEvent>) => {
     event.preventDefault();
   };

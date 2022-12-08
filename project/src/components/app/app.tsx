@@ -17,11 +17,11 @@ function App(): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={AppRoute.Root} element={<MainScreen />}/>
-        <Route path={AppRoute.Login} element={<LoginScreen/>}/>
-        <Route path={AppRoute.Room} element={<PropertyScreen/>}/>
-        <Route path={AppRoute.Private} element={<PrivateRoute authorizationStatus={AuthorizationStatus.NotAuthorized}><FavoritesScreen/></PrivateRoute>} />
-        <Route path={AppRoute.Error} element={<ErrorsScreen/>}/>
+        <Route path={AppRoute.Root} element={<MainScreen />} />
+        <Route path={AppRoute.Login} element={<LoginScreen />} />
+        <Route path={AppRoute.Room} element={<PropertyScreen />} />
+        <Route path={AppRoute.Private} element={<PrivateRoute authorizationStatus={AuthorizationStatus.NotAuthorized}><FavoritesScreen /></PrivateRoute>} />
+        <Route path={AppRoute.Error} element={<ErrorsScreen />} />
       </Routes>
     </BrowserRouter>
   );
