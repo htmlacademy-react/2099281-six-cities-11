@@ -1,7 +1,15 @@
 import {configureStore} from '@reduxjs/toolkit';
 import {resetSelection} from './offers-store/offers-reducer';
-import {resetSort} from './sort-store/sort-reducer';
+import {createAPI} from '../services/api';
+
+export const api = createAPI();
 
 export const store = configureStore({
-  reducer: {resetSelection, resetSort}
+  reducer: resetSelection,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      thunk: {
+        extraArgument: api,
+      },
+    }),
 });
