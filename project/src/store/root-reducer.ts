@@ -1,14 +1,30 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { DEFAULT_CITY, SortTypes } from '../constants';
+import { AuthorizationStatus, DEFAULT_CITY, SortTypes } from '../constants';
 import { resetSort, loadOffers, changeCity } from './offers-store/offers-actions';
-import { OffersType } from '../types/types';
+import { OffersType, UserType } from '../types/types';
+import {checkAuthAction, loginAction, logoutAction} from './api-actions';
 
-const initialState = {
-  authInfo: null,
+type InitialState = {
+  authorizationStatus: string,
+  authInfo: UserType,
+  hasErrorLogin: boolean,
 
-  offers: <OffersType>[],
+  offers: OffersType,
+  selectedCity: string,
+  selectedOffers: OffersType,
+
+  sortType: string,
+  sortView: string,
+};
+
+const initialState : InitialState = {
+  authorizationStatus: AuthorizationStatus.Unknown,
+  authInfo: <UserType><unknown>[],
+  hasErrorLogin: false,
+
+  offers: [],
   selectedCity: DEFAULT_CITY.name,
-  selectedOffers: <OffersType>[],
+  selectedOffers: [],
 
   sortType: SortTypes.Popular,
   sortView: 'closed',
@@ -26,7 +42,26 @@ const rootReducer = createReducer(initialState, (builder) => {
     })
     .addCase(loadOffers, (state, action) => {
       state.offers = action.payload;
+    })
+    .addCase(checkAuthAction.fulfilled, (state, action) => {
+      state.authorizationStatus = AuthorizationStatus.Authorized;
+      state.authInfo = action.payload;
+    })
+    .addCase(checkAuthAction.rejected, (state) => {
+      state.authorizationStatus = AuthorizationStatus.NotAuthorized;
+    })
+    .addCase(loginAction.fulfilled, (state) => {
+      state.authorizationStatus = AuthorizationStatus.Authorized;
+      state.hasErrorLogin = false;
+    })
+    .addCase(loginAction.rejected, (state) => {
+      state.authorizationStatus = AuthorizationStatus.NotAuthorized;
+      state.hasErrorLogin = true;
+    })
+    .addCase(logoutAction.fulfilled, (state) => {
+      state.authorizationStatus = AuthorizationStatus.NotAuthorized;
+      state.hasErrorLogin = false;
     });
-});
+  });
 
 export { rootReducer };

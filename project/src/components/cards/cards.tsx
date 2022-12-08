@@ -13,20 +13,20 @@ function Cards( props: CardScreenProps): JSX.Element {
   return (
     <div>
       {offers.map((offer, id) => {
-        const keyValue = `${id}-${offer.src}`;
+        const keyValue = `${id}-${offer.host.avatarUrl}`;
         return (
           <article key={keyValue} id={`offer-${id}`} onMouseEnter={(event: MouseEvent<HTMLElement>) => { if (event) { cardsofferHoverHandler([...offerHover.slice(0, id), ...offerHover.slice(id + 1)]); } }} className="cities__place-card place-card">
             <div className="cities__image-wrapper place-card__image-wrapper">
               <a href="#">
-                <img className="place-card__image" src={offer.src} width="260" height="200" alt="Place image" />
+                <img className="place-card__image" src={offer.previewImage} width="260" height="200" alt="Place image" />
               </a>
             </div>
             <div className="place-card__info">
               <div style={{ width: '50%' }}>
                 <div className="place-card__price-wrapper">
                   <div className="place-card__price">
-                    <b className="place-card__price-value">{offer.current} {offer.price}</b>
-                    <span className="place-card__price-text">&#47;&nbsp;{offer.time}</span>
+                    <b className="place-card__price-value">{offer.type} {offer.price}</b>
+                    <span className="place-card__price-text">&#47;&nbsp;{offer.description}</span>
                   </div>
                   <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button" style={{ width: '15%' }}>
                     <svg className="place-card__bookmark-icon" width="18" height="19">
