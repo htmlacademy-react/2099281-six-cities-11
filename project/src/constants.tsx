@@ -48,3 +48,11 @@ export enum SortTypes {
 }
 
 export const SortTypesArray = [SortTypes.Popular, SortTypes.PriceHigh, SortTypes.PriceLow, SortTypes.Rating];
+
+export enum APIRoute {
+  Offers = '/hotels',
+  Login = '/login',
+  Logout = '/logout',
+  Comments = '/comments',
+  Favorite = '/favorite',
+}

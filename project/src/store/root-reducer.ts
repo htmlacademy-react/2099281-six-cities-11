@@ -1,25 +1,26 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { DEFAULT_CITY, SortTypes } from '../constants';
-import { initializeData, loadOffers } from './offers-store/offers-actions';
-import { sortOffers } from './sort-store/sort-actions';
+import { resetSort, loadOffers, changeCity } from './offers-store/offers-actions';
 import { OffersType } from '../types/types';
 
 const initialState = {
+  authInfo: null,
+
   offers: <OffersType>[],
-  selectedCity: DEFAULT_CITY,
+  selectedCity: DEFAULT_CITY.name,
   selectedOffers: <OffersType>[],
 
   sortType: SortTypes.Popular,
   sortView: 'closed',
 };
 
-const reducer = createReducer(initialState, (builder) => {
+const rootReducer = createReducer(initialState, (builder) => {
   builder
-    .addCase(initializeData, (state) => {
-      state.selectedCity = DEFAULT_CITY;
-      state.selectedOffers = state.offers.filter((offer) => offer.city.name === state.selectedCity.name);
+    .addCase(changeCity, (state, action) => {
+      state.selectedCity = action.payload;
+      state.selectedOffers = state.offers.filter((offer) => offer.city.name === state.selectedCity);
     })
-    .addCase(sortOffers, (state) => {
+    .addCase(resetSort, (state) => {
       state.sortType = SortTypes.Popular;
       state.sortView = 'closed';
     })
@@ -28,4 +29,4 @@ const reducer = createReducer(initialState, (builder) => {
     });
 });
 
-export { reducer };
+export { rootReducer };

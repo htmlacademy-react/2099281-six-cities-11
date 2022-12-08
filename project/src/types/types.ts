@@ -55,3 +55,8 @@ export type UserType = {
   name: string
   token: string
 };
+
+export type AuthData = {
+  login: string;
+  password: string;
+};
