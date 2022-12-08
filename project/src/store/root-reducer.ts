@@ -3,11 +3,13 @@ import { AuthorizationStatus, DEFAULT_CITY, SortTypes } from '../constants';
 import { resetSort, loadOffers, changeCity } from './offers-store/offers-actions';
 import { OffersType, UserType } from '../types/types';
 import {checkAuthAction, loginAction, logoutAction} from './api-actions';
+import { setError } from './action';
 
 type InitialState = {
   authorizationStatus: string,
   authInfo: UserType,
   hasErrorLogin: boolean,
+  error: string,
 
   offers: OffersType,
   selectedCity: string,
@@ -21,6 +23,7 @@ const initialState : InitialState = {
   authorizationStatus: AuthorizationStatus.Unknown,
   authInfo: <UserType><unknown>[],
   hasErrorLogin: false,
+  error: 'test',
 
   offers: [],
   selectedCity: DEFAULT_CITY.name,
@@ -61,6 +64,11 @@ const rootReducer = createReducer(initialState, (builder) => {
     .addCase(logoutAction.fulfilled, (state) => {
       state.authorizationStatus = AuthorizationStatus.NotAuthorized;
       state.hasErrorLogin = false;
+    })
+    .addCase(setError, (state,action) => {
+      state.authorizationStatus = AuthorizationStatus.NotAuthorized;
+      state.hasErrorLogin = true;
+      state.error = action.payload;
     });
   });
 

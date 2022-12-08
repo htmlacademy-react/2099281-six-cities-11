@@ -1,10 +1,22 @@
 import {AxiosInstance} from 'axios';
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {AppDispatch, State} from '../types/state.js';
-import {AuthData, CommentsType, OffersType, OfferType, UserType} from '../types/types';
-import {APIRoute, AppRoute} from '../constants';
+import {AuthData, CommentsType, OffersType, UserType} from '../types/types';
+import {APIRoute, AppRoute, TIMEOUT_SHOW_ERROR} from '../constants';
 import {saveToken, dropToken} from '../services/token';
-import {redirectToRoute} from './action';
+import {redirectToRoute, setError} from './action';
+import { loadOffers } from './offers-store/offers-actions.js';
+import { store } from './';
+
+export const clearErrorAction = createAsyncThunk(
+    'app/clearError',
+    () => {
+      setTimeout(
+        () => store.dispatch(setError('')),
+        TIMEOUT_SHOW_ERROR,
+      );
+    },
+  );
 
 export const checkAuthAction = createAsyncThunk<UserType, undefined, {
     dispatch: AppDispatch;
@@ -45,7 +57,7 @@ export const loginAction = createAsyncThunk<void, AuthData, {
     },
   );
 
-  export const fetchOffersAction = createAsyncThunk<OffersType, undefined, {
+  export const fetchOffersAction = createAsyncThunk<void, undefined, {
     dispatch: AppDispatch;
     state: State;
     extra: AxiosInstance;
@@ -53,7 +65,8 @@ export const loginAction = createAsyncThunk<void, AuthData, {
     'data/fetchOffers',
     async (_arg, {dispatch, extra: api}) => {
       const {data} = await api.get<OffersType>(APIRoute.Offers);
-      return data;
+      dispatch(loadOffers(data));
+      //return data;
     },
   );
   
@@ -65,7 +78,7 @@ export const fetchCommentsAction = createAsyncThunk<CommentsType, string, {
     'data/fetchComments',
     async (id, {dispatch, extra: api}) => {
       const {data} = await api.get<CommentsType>(`${APIRoute.Comments}/${id}`);
-      return data;
+      return data
     },
   );
     
@@ -92,4 +105,3 @@ export const fetchCommentsAction = createAsyncThunk<CommentsType, string, {
       return data;
     },
   );
-  

@@ -35,6 +35,8 @@ export const DEFAULT_CITY: CityType = {
   name: 'Amsterdam',
 }
 
+export const TIMEOUT_SHOW_ERROR = 300;
+
 export enum ImgMarker {
   MarkerDefault = 'img/pin.svg',
   MarkerCurrent = 'img/pin-active.svg'
