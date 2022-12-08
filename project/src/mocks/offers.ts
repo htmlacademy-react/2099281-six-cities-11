@@ -1,102 +1,157 @@
-import { RentInfo } from '../types/types';
+import { OffersType } from '../types/types';
 
-export const offers: RentInfo =
+export const offers: OffersType =
   [
     {
-      id: 1,
-      title: 'Nice, cozy, warm big bed apartment',
-      city: {
-        name: 'Amsterdam',
-        location: {
-          title: 'Amsterdam',
-          latitude: 52.37454,
-          longitude: 4.897976,
+      "bedrooms": 3,
+      "city": {
+        "location": {
+          "latitude": 52.370216,
+          "longitude": 4.895168,
+          "zoom": 10
         },
-        zoom:10,
+        "name": "Amsterdam"
       },
-      location: {
-        title: 'Nice, cozy, warm big bed apartment',
-        latitude: 52.3909553943508,
-        longitude: 4.85309666406198,
+      "description": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.",
+      "goods": [
+        "Heating"
+      ],
+      "host": {
+        "avatarUrl": "img/1.png",
+        "id": 3,
+        "isPro": true,
+        "name": "Angelina"
       },
-      src: 'img/apartment-03.jpg',
-      price: 1830,
-      current: '€',
-      type: 'Apartment',
-      lable: 'Premium',
-      time: 'night',
-      srcSmall: 'img/apartment-03-small.jpg',
-    }, {
-      id: 2,
-      title: 'Beautiful & luxurious apartment at great location',
-      city: {
-        name: 'Amsterdam',
-        location: {
-          title: 'Amsterdam',
-          latitude: 52.37454,
-          longitude: 4.897976,
-        },
-        zoom:10,
+      "id": 1,
+      "images": [
+        "img/1.png"
+      ],
+      "isFavorite": true,
+      "isPremium": false,
+      "location": {
+        "latitude": 52.35514938496378,
+        "longitude": 4.673877537499948,
+        "zoom": 8
       },
-      location: {
-        title: 'Beautiful & luxurious apartment at great location',
-        latitude: 52.3609553943508,
-        longitude: 4.85309666406198,
-      },
-      src: 'img/apartment-01.jpg',
-      price: 1220,
-      current: '€',
-      type: 'Apartment',
-      lable: 'Premium',
-      time: 'night',
-      srcSmall: 'img/apartment-01-small.jpg',
-    }, {
-      id: 3,
-      title: 'Wood and stone place',
-      city: {
-        name: 'Amsterdam',
-        location: {
-          title: 'Amsterdam',
-          latitude: 52.37454,
-          longitude: 4.897976,
-        },
-        zoom:10,
-      },
-      location: {
-        title: 'Wood and stone place',
-        latitude: 52.3909553943508,
-        longitude: 4.929309666406198,
-      },
-      src: 'img/room.jpg',
-      price: 840,
-      current: '€',
-      type: 'Private room',
-      lable: 'good',
-      time: 'night',
-      srcSmall: 'img/room-small.jpg',
-    }, {
-      id: 4,
-      title: 'Canal View Prinsengracht',
-      city: {
-        name: 'Amsterdam',
-        location: {
-          title: 'Amsterdam',
-          latitude: 52.37454,
-          longitude: 4.897976,
-        },
-        zoom:10,
-      },
-      location: {
-        title: 'Canal View Prinsengracht',
-        latitude: 52.3809553943508,
-        longitude: 4.939309666406198,
-      },
-      src: 'img/apartment-02.jpg',
-      price: 135,
-      current: '€',
-      type: 'Apartment',
-      lable: 'not bad',
-      time: 'night',
-      srcSmall: 'img/apartment-02-small.jpg',
+      "maxAdults": 4,
+      "previewImage": "img/1.png",
+      "price": 120,
+      "rating": 4.8,
+      "title": "Beautiful & luxurious studio at great location",
+      "type": "apartment"
     },
-  ];
+    {
+      "bedrooms": 3,
+      "city": {
+        "location": {
+          "latitude": 52.370216,
+          "longitude": 4.895168,
+          "zoom": 10
+        },
+        "name": "Amsterdam"
+      },
+      "description": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.",
+      "goods": [
+        "Heating"
+      ],
+      "host": {
+        "avatarUrl": "img/1.png",
+        "id": 3,
+        "isPro": true,
+        "name": "Angelina"
+      },
+      "id": 1,
+      "images": [
+        "img/1.png"
+      ],
+      "isFavorite": true,
+      "isPremium": false,
+      "location": {
+        "latitude": 52.35514938496378,
+        "longitude": 4.673877537499948,
+        "zoom": 8
+      },
+      "maxAdults": 4,
+      "previewImage": "img/1.png",
+      "price": 120,
+      "rating": 4.8,
+      "title": "Beautiful & luxurious studio at great location",
+      "type": "apartment"
+    },
+    {
+      "bedrooms": 3,
+      "city": {
+        "location": {
+          "latitude": 52.370216,
+          "longitude": 4.895168,
+          "zoom": 10
+        },
+        "name": "Amsterdam"
+      },
+      "description": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.",
+      "goods": [
+        "Heating"
+      ],
+      "host": {
+        "avatarUrl": "img/1.png",
+        "id": 3,
+        "isPro": true,
+        "name": "Angelina"
+      },
+      "id": 1,
+      "images": [
+        "img/1.png"
+      ],
+      "isFavorite": true,
+      "isPremium": false,
+      "location": {
+        "latitude": 52.35514938496378,
+        "longitude": 4.673877537499948,
+        "zoom": 8
+      },
+      "maxAdults": 4,
+      "previewImage": "img/1.png",
+      "price": 120,
+      "rating": 4.8,
+      "title": "Beautiful & luxurious studio at great location",
+      "type": "apartment"
+    },
+    {
+      "bedrooms": 3,
+      "city": {
+        "location": {
+          "latitude": 52.370216,
+          "longitude": 4.895168,
+          "zoom": 10
+        },
+        "name": "Amsterdam"
+      },
+      "description": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.",
+      "goods": [
+        "Heating"
+      ],
+      "host": {
+        "avatarUrl": "img/1.png",
+        "id": 3,
+        "isPro": true,
+        "name": "Angelina"
+      },
+      "id": 1,
+      "images": [
+        "img/1.png"
+      ],
+      "isFavorite": true,
+      "isPremium": false,
+      "location": {
+        "latitude": 52.35514938496378,
+        "longitude": 4.673877537499948,
+        "zoom": 8
+      },
+      "maxAdults": 4,
+      "previewImage": "img/1.png",
+      "price": 120,
+      "rating": 4.8,
+      "title": "Beautiful & luxurious studio at great location",
+      "type": "apartment"
+    }
+  ]

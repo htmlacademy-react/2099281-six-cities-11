@@ -1,5 +1,5 @@
 import { Icon, Marker } from 'leaflet';
-import { CityType, RentInfo, Location } from '../../types/types';
+import { CityType, OffersType, LocationType } from '../../types/types';
 import { useEffect, useRef } from 'react';
 import { useMap } from '../../hooks/use-map';
 import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT } from '../../constants';
@@ -7,8 +7,8 @@ import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT } from '../../constants';
 
 type MapProps = {
     city: CityType;
-    offers: RentInfo;
-    selectedPoint: Location;
+    offers: OffersType;
+    selectedPoint: LocationType;
 }
 
 function Map(props: MapProps) {

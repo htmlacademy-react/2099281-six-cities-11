@@ -1,10 +1,10 @@
-import { RentInfo } from '../../types/types';
+import { OffersType } from '../../types/types';
 import { MouseEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {AppRoute} from '../../constants';
 
 type CardScreenProps = {
-  offers: RentInfo;
+  offers: OffersType;
 }
 
 function Cards( props: CardScreenProps): JSX.Element {
