@@ -11,8 +11,9 @@ export enum AppRoute{
   }
 
 export enum AuthorizationStatus{
-    Authorized = 'true',
-    NotAuthorized = 'false'
+    Authorized = 'AUTH',
+    NotAuthorized = 'NO_AUTH',
+    Unknown = 'UNKNOWN'
   }
 
 export const URL_MARKER_DEFAULT =
@@ -26,14 +27,15 @@ export const ZOOM_MAP = 13;
 export const CITIES: string[] = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
 
 export const DEFAULT_CITY: CityType = {
-  name: 'Amsterdam',
   location: {
-    title: 'Amsterdam',
     latitude: 52.37454,
     longitude: 4.897976,
+    zoom: 15
   },
-  zoom: 15
+  name: 'Amsterdam',
 };
+
+export const TIMEOUT_SHOW_ERROR = 300;
 
 export enum ImgMarker {
   MarkerDefault = 'img/pin.svg',
@@ -48,3 +50,11 @@ export enum SortTypes {
 }
 
 export const SortTypesArray = [SortTypes.Popular, SortTypes.PriceHigh, SortTypes.PriceLow, SortTypes.Rating];
+
+export enum APIRoute {
+  Offers = '/hotels',
+  Login = '/login',
+  Logout = '/logout',
+  Comments = '/comments',
+  Favorite = '/favorite',
+}
