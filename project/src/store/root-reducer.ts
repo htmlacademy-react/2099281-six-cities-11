@@ -6,18 +6,18 @@ import { checkAuthAction, loginAction, logoutAction } from './api-actions';
 import { setError } from './action';
 
 type InitialState = {
-  authorizationStatus: string,
-  authInfo: UserType | null,
-  hasErrorLogin: boolean,
-  error: string | null,
+  authorizationStatus: string;
+  authInfo: UserType | null;
+  hasErrorLogin: boolean;
+  error: string | null;
 
-  offers: OffersType,
+  offers: OffersType;
   isDataLoading: boolean;
-  selectedCity: string,
-  selectedOffers: OffersType,
+  selectedCity: string;
+  selectedOffers: OffersType;
 
-  sortType: string,
-  sortView: string,
+  sortType: string;
+  sortView: string;
 };
 
 const initialState: InitialState = {

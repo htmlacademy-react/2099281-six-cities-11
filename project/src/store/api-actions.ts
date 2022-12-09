@@ -5,7 +5,7 @@ import { AuthData, CommentsType, OffersType, UserType } from '../types/types';
 import { APIRoute, AppRoute, TIMEOUT_SHOW_ERROR } from '../constants';
 import { saveToken, dropToken } from '../services/token';
 import { redirectToRoute, setError } from './action';
-import { loadOffers, setLoadingStatus } from './offers-store/offers-actions.js';
+import { loadOffers, setLoadingStatus } from './offers-store/offers-actions';
 import { loadAuthInfo } from './user-store/user-action';
 import { store } from './';
 
@@ -19,14 +19,29 @@ export const clearErrorAction = createAsyncThunk(
   },
 );
 
+export const fetchOffersAction = createAsyncThunk<void, undefined, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'data/fetchOffers',
+  async (_arg, { dispatch, extra: api }) => {
+    dispatch(setLoadingStatus(true));
+    const { data } = await api.get<OffersType>(APIRoute.Offers);
+    dispatch(setLoadingStatus(false));
+    dispatch(loadOffers(data));
+
+  },
+);
+
 export const checkAuthAction = createAsyncThunk<UserType, undefined, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
 }>(
   'user/checkAuth',
-  async (_arg, { dispatch, extra: api }) => {
-    const { data } = await api.get<UserType>(APIRoute.Login);
+  async (_arg, {dispatch, extra: api}) => {
+    const {data} = await api.get<UserType>(APIRoute.Login);
     return data;
   },
 );
@@ -58,21 +73,6 @@ export const logoutAction = createAsyncThunk<void, undefined, {
   },
 );
 
-export const fetchOffersAction = createAsyncThunk<void, undefined, {
-  dispatch: AppDispatch;
-  state: State;
-  extra: AxiosInstance;
-}>(
-  'data/fetchOffers',
-  async (_arg, { dispatch, extra: api }) => {
-    dispatch(setLoadingStatus(true));
-    const { data } = await api.get<OffersType>(APIRoute.Offers);
-    dispatch(setLoadingStatus(false));
-    dispatch(loadOffers(data));
-
-  },
-);
-
 export const fetchCommentsAction = createAsyncThunk<CommentsType, string, {
   dispatch: AppDispatch;
   state: State;
@@ -81,7 +81,7 @@ export const fetchCommentsAction = createAsyncThunk<CommentsType, string, {
   'data/fetchComments',
   async (id, { dispatch, extra: api }) => {
     const { data } = await api.get<CommentsType>(`${APIRoute.Comments}/${id}`);
-    return data
+    return data;
   },
 );
 

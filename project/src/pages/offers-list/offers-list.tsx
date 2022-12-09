@@ -1,9 +1,14 @@
 import Cards from '../../components/cards/cards';
-import { offers } from '../../mocks/offers';
+import { OffersType } from '../../types/types';
 
-function OffersList(): JSX.Element {
+
+type OffersScreenProps = {
+  offers: OffersType;
+}
+function OffersList(props : OffersScreenProps): JSX.Element {
+  const {offers} = props;
   return(
-    <Cards offers={offers}/>
+    <Cards offers = {offers}/>
   );
 }
 export default OffersList;

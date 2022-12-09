@@ -1,12 +1,19 @@
-import {MouseEvent} from 'react';
-import {Link} from 'react-router-dom';
-import {AppRoute} from '../../constants';
+import { MouseEvent } from 'react';
+import { Link } from 'react-router-dom';
+import { AppRoute } from '../../constants';
+import { logoutAction } from '../../store/api-actions';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { getAuthInfo } from '../../store/user-store/user-action';
 
 function HeaderAuth(): JSX.Element {
 
+  const dispatch = useAppDispatch();
+
+  const authInfo = useAppSelector(getAuthInfo);
+
   const handleLoginClick = (evt: MouseEvent<HTMLAnchorElement>) => {
     evt.preventDefault();
-    //Обработка события выхода
+    dispatch(logoutAction());
   };
 
   return (
@@ -15,7 +22,7 @@ function HeaderAuth(): JSX.Element {
         <Link to={AppRoute.Favorites} className="header__nav-link header__nav-link--profile">
           <div className="header__avatar-wrapper user__avatar-wrapper">
           </div>
-          <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
+          <span className="header__user-name user__name">{authInfo?.email}</span>
           <span className="header__favorite-count">3</span>
         </Link>
       </li>

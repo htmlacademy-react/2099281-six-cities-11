@@ -33,7 +33,7 @@ export const DEFAULT_CITY: CityType = {
     zoom: 15
   },
   name: 'Amsterdam',
-}
+};
 
 export const TIMEOUT_SHOW_ERROR = 300;
 

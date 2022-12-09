@@ -1,14 +1,12 @@
-import { reviews } from '../../mocks/reviews';
 import ReviewList from '../reviews-list/reviews-list';
 import ReviewFormScreen from './review-form-screen';
 import Map from '../../components/map/map';
-import { offers } from '../../mocks/offers';
-import { DEFAULT_CITY } from '../../constants';
+import { useAppSelector } from '../../hooks';
 
 function PropertyScreen( ): JSX.Element {
-  const currentCity = DEFAULT_CITY;
-  const offersForCity = offers.filter((offer) =>offer.city.name === currentCity.name);
-  const selectedPoint = offersForCity[0].city.location;
+  const offersForCity = useAppSelector((state)=>state.selectedOffers);
+  const currentCity = offersForCity[0].city;
+  const selectedPoint = currentCity.location;
 
   return (
     <main className="page__main page__main--property">
@@ -132,7 +130,7 @@ function PropertyScreen( ): JSX.Element {
             </div>
             <section className="property__reviews reviews">
               <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">1</span></h2>
-              <ReviewList reviews={reviews}/>
+              <ReviewList reviews={[]}/>
               <ReviewFormScreen />
             </section>
           </div>
